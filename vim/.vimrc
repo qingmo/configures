@@ -6,6 +6,7 @@ endif
 autocmd BufEnter * lcd %:p:h
 set nocompatible "不要vim模仿vi模式，建议设置，否则会有很多不兼容的问题
 syntax on	"打开高亮
+imap aa <esc>	"map aa to esc key
 lang message zh_CN.UTF-8 "deal console 
 set encoding=utf-8
 set fileencoding=utf-8
