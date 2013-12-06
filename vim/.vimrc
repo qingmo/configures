@@ -6,15 +6,27 @@ endif
 autocmd BufEnter * lcd %:p:h
 set nocompatible "不要vim模仿vi模式，建议设置，否则会有很多不兼容的问题
 syntax on	"打开高亮
-imap aa <esc>	"map aa to esc key
+imap jj <esc>	"map jj to esc key
 lang message zh_CN.UTF-8 "deal console 
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latinl
 language messages zh_CN.utf-8
-filetype plugin indent on "根据文件进行缩进
-set autoindent " always set autoindenting on 
-set cindent
+if has("autocmd")
+	filetype plugin indent on "根据文件进行缩进
+	augroup vimrcEx
+		au!
+		autocmd FileType text setlocal textwidth=78
+		autocmd BufReadPost *
+					\ if line("'\"") > 1 && line("'\"") <= line("$") |
+					\ exe "normal! g`\"" |
+					\ endif
+	augroup END
+else
+	"智能缩进，相应的有cindent，官方说autoindent可以支持各种文件的缩进，但是效果会比只支持C/C++的cindent效果会差一点，但笔者并没有看出来
+	set autoindent " always set autoindenting on 
+	set cindent
+endif " has("autocmd")
 set tabstop=4 "让一个tab等于4个空格
 set softtabstop=4
 set shiftwidth=4
@@ -118,7 +130,6 @@ let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1 "当taglist是最后一个分割窗口时，自动推出vim
 let Tlist_Process_File_Always=0 "是否一直处理tags.1:处理;0:不处理。不是一直实时更新tags，因为没有必要
 let Tlist_Inc_Winwidth=0
-let Tlist_Show_Menu=1 "show taglist menu
 
 "禁用omnicppcomplete的预览窗口
 set completeopt=menu
@@ -178,3 +189,32 @@ set autochdir
 "else
 "	set background=dark
 "endif
+
+
+set nocp
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" let Vundle manage Vundle
+Bundle 'gmark/vundle'
+
+"my Bundle here:
+"
+"original repos on github
+"Bundle 'Lokaltog/vim-powerline'
+"................................
+Bundle 'DoxygenToolkit.vim'
+Bundle 'The-NERD-Commenter'
+"Bundle 'OmniCppComplete'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'taglist.vim'
+Bundle 'AutoClose'
+"vim-scripts repos
+".................................
+" non github repos
+" Bundle 'git://git.wincent.com/command-t.git'
+".................................
+"********************************************
+filetype plugin indent on "根据文件进行缩进
+"vundle configures ends
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'

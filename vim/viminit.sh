@@ -1,18 +1,16 @@
 #!/bin/bash
 #vim initial bash script
 
-vimarchivefolder="vim.tar.bz2"
 vimconfig=".vimrc"
 
-if [ -e "${vimarchivefolder}" ]
-	echo "Warnning ${vimarchivefolder} not exist"
-fi
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
-if [ -e "${vimconfig}" ]
+if [ ! -e "${vimconfig}" ]
+then
 	echo "Warnning ${vimconfig} not exist"
 fi
 
-tar -xvf ${vimarchivefolder} -C ~/
+#tar -xvf ${vimarchivefolder} -C ~/
 cp "${vimconfig}" ~/
 
 exit

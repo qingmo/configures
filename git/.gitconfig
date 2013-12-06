@@ -1,0 +1,11 @@
+[user]
+	name = qingluo
+	email = eagleqingluo@gmail.com
+[color]
+	ui = auto
+[alias]
+	ci = commit -v -a
+[core]
+	editor = vim
+[receive]
+	denyCurrentBranch = ignore

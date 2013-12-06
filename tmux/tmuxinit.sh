@@ -2,7 +2,8 @@
 
 tmuxconfig=".tmux.conf"
 
-if [ -e "${tmuxconfig}" ]
+if [ ! -e "${tmuxconfig}" ]
+then
 	echo "Warnning ${tmuxconfig} not exist"
 fi
 
