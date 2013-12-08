@@ -155,7 +155,7 @@ let mapleader="`"
 "
 "let g:DoxygenToolkit_authorName="qingluo,eagleqingluo@gmail.com"
 "let s:licenseTag = '"****************************************************"
-"let s:licenseTag = s:licenseTag."\<enter>Copyright(C)2009,T-CHIP Co.,Ltd.All Rights Reserved."
+"let s:licenseTag = s:licenseTag."\<enter>Copyright(C)jason All Rights Reserved."
 "let g:DoxygenToolkit_licenseTag = s:licenseTag
 "let g:DoxygenToolkit_briefTag_funcName="yes"
 "let g:doxygen_enhanced_color=1
@@ -169,7 +169,7 @@ let g:DoxygenToolkit_authorTag="Author: "
 let g:DoxygenToolkit_authorName="qingluo,eagleqingluo@gmail.com"
 let g:DoxygenToolkit_fileTag="File: "
 let g:DoxygenToolkit_dateTag="Date: "
-let g:DoxygenToolkit_licenseTag="Copyright(C)2009,T-CHIP Co.,Ltd.All Rights Reserved."
+let g:DoxygenToolkit_licenseTag="Copyright(C)jason All Rights Reserved."
 let g:DoxygenToolkit_briefTag_funcName="yes"
 let g:DoxygenToolkit_compactDoc="yes"
 let g:DoxygenToolkit_paramTag_pre="Parameter: "
@@ -208,6 +208,7 @@ Bundle 'The-NERD-Commenter'
 "Bundle 'OmniCppComplete'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'taglist.vim'
+Bundle 'a.vim'
 Bundle 'AutoClose'
 "vim-scripts repos
 ".................................

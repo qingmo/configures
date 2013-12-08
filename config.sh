@@ -19,3 +19,13 @@ then
 else
 	echo "tmux not exist"
 fi
+
+if [ -e git ]
+then
+	echo "git config..."
+	cd git 
+	./gitinit.sh
+	cd ../
+else
+	echo "git not exist"
+fi
