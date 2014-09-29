@@ -110,8 +110,8 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'taglist.vim'
 Bundle 'a.vim'
 "auto complete {} [] ...
-"Bundle 'AutoClose'
-Bundle 'Raimondi/delimitMate'
+Bundle 'AutoClose'
+"Bundle 'Raimondi/delimitMate'
 "vim-scripts repos
 ".................................
 " non github repos
