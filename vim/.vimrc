@@ -5,8 +5,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,latinl
 filetype plugin indent on "根据文件进行缩进
-lang message zh_CN.UTF-8 "deal console 
-language messages zh_CN.utf-8
+lang message en_US.UTF-8 "deal console 
+language messages en_US.utf-8
 set autoindent " always set autoindenting on 
 set cindent
 set tabstop=4 "让一个tab等于4个空格
@@ -40,8 +40,6 @@ let Tlist_Inc_Winwidth=0
 "对NERD_commenter的设置
 let NERDShutUp=1
 "setting nerdcommenter shortcuts
-"<leader> +cc comment set
-"<leader> +cu comment unset
 let mapleader="`"
 
 "powerline status setting
@@ -52,42 +50,9 @@ let g:Powerline_symbols='unicode'
 set tags=tags,./tags;
 set autochdir 
 
-
-"Python 注释
-function InsertPythonComment()
-	exe 'normal'.1.'G'
-	let line = getline('.')
-	if line =~ '^#!.*$' || line =~ '^#.*coding:.*$'
-		return
-	endif
-	normal O
-	call setline('.', '#!/usr/bin/env python')
-	normal o
-	call setline('.', '# -*- coding:utf-8-*-')
-	normal o
-	call setline('.', '#')
-	normal o
-	call setline('.', '#	Author	:	'.g:python_author)
-	normal o
-	call setline('.', '#	E-mail	:	'.g:python_email)
-	normal o
-	call setline('.', '#	Date	:	'.strftime("%y/%m/%d %H:%M:%S"))
-	normal o
-	call setline('.', '#	Desc    :   ')
-	normal o
-	call setline('.', '#')
-	normal o
-	call cursor(7, 17)
-endfunction
-function InsertCommentWhenOpen()
-	if a:lastline == 1 && !getline('.')
-		call InsertPythonComment()
-	end
-endfunc
-au FileType python :%call InsertCommentWhenOpen()
-au FileType python map <F4> :call InsertPythonComment()<cr>
-let g:python_author = 'jason'               " 姓名
-let g:python_email  = 'eagleqingluo@gmail.com'  " 邮箱
+if has("cscope")
+	cs add cscope.out
+endif
 
 
 set nocp
@@ -102,7 +67,7 @@ Bundle 'gmarik/vundle'
 "original repos on github
 "Bundle 'Lokaltog/vim-powerline'
 "................................
-"Bundle 'DoxygenToolkit.vim'
+Bundle 'DoxygenToolkit.vim'
 Bundle 'The-NERD-Commenter'
 "Bundle 'OmniCppComplete'
 Bundle "Lokaltog/vim-powerline"
@@ -110,8 +75,10 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'taglist.vim'
 Bundle 'a.vim'
 "auto complete {} [] ...
-Bundle 'AutoClose'
-"Bundle 'Raimondi/delimitMate'
+"Bundle 'AutoClose'
+Bundle 'Raimondi/delimitMate'
+Bundle 'kien/ctrlp.vim'
+Bundle 'brookhong/cscope.vim'
 "vim-scripts repos
 ".................................
 " non github repos
@@ -121,3 +88,6 @@ Bundle 'AutoClose'
 filetype plugin indent on "根据文件进行缩进
 "vundle configures ends
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
