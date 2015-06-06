@@ -29,3 +29,4 @@ then
 else
 	echo "git not exist"
 fi
+git clone https://github.com/purcell/emacs.d.git ~/.emacs.d
