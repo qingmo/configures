@@ -20,6 +20,16 @@ else
 	echo "tmux not exist"
 fi
 
+if [ -e zsh ]
+then
+	echo "zsh config..."
+	cd zsh 
+	./zshinit.sh
+	cd ../
+else
+	echo "zsh not exist"
+fi
+
 if [ -e git ]
 then
 	echo "git config..."
