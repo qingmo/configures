@@ -17,4 +17,4 @@ fi
 
 cp "${globalconfig}" ${globaltargetpath}
 
-cp "${globalconfig}" ~/
+cp "${selfconfig}" ~/
